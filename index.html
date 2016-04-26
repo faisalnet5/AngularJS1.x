@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> <!-- URL from CDN -->
+
+<!-- Using for Example 4 (E) -->
+<style>
+input.ng-invalid {
+    background-color: #CBF8C0;
+}
+</style>
+
+
+<body>
+<h3>Learning AngularJS 1.x (Hands-on exercises based on <a
+								href="http://www.w3schools.com/angular/default.asp"
+								target="_blank" style="text-decoration: none">W3School</a></td> and more...)</h3>
+<hr>
+<b>Notes:</b><br>
+<ul>
+	<li>Add Angular library (locally or use URI/URL from CDN)</li>
+	<li>Memorize few Angular key words such as: 'MVC', 'modules', 'scope', 'ng-directives', 'ng-app', 'ng-model', 'ng-bind', 'expression' etc</li>
+	<li>Complete/understand all the sample examples below :)</li>
+</ul>
+
+<!-- ********************************** -->
+<hr>
+<b>Example-1: Inline AngularJS magic with two-way binding (<i>Notice</i> how we are using: 'ng-app', 'ng-model' and 'expression')</b>
+<br>
+<!-- <div ng-app="">
+ 	<p>Name : <input type="text" ng-model="name"></p>
+ 	<h2>Hello {{name}}</h2>
+ 	Through expression, we also can do arithmatic calculation such as 2+3 is: {{ 2 + 3 }}<br>
+ 	Notice: AngularJS expressions can be written inside HTML
+</div> -->
+
+<!-- ********************************** -->
+<hr>
+<b>Example-2: Implement the same above example with modular approach (<i>Carefully notice</i> the file structure as well as how we are using: 'ng-app', 'ng-model' and 'expression')</b>
+<br>
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+ 	<p>Name : <input type="text" ng-model="name"></p>
+ 	<h2>Hello {{name}}</h2>
+ 	Notice: how we are adding a modularize controller for this Application called 'myApp'
+</div> -->
+
+<!-- ********************************** -->
+<hr>
+<b>Example-3: Playing with Directives (In-Build (<i>Mainly:</i> 'ng-init', 'ng-bind', 'ng-repeat'...etc) vs Custom (Your Own))</b>
+<br>
+<!--* In-Build (<i>Mainly:</i> 'ng-init', 'ng-bind', 'ng-repeat'...etc):<br>
+
+ (a) ng-init (String) -->
+<!-- <div ng-app="myApp" ng-controller="myCtrl" ng-init="lastName='Adnan'">
+	<p>Name: <input type="text" ng-model="lastName"></p>
+	<p>Your lastname (Example: ng-init): {{ lastName }}</p> -->	 <!-- Using Expression to bind -->
+<!-- </div>  -->
+
+<!-- (b) ng-bind (Inline way) ng-init (Numbers) -->
+<!-- <div ng-app="" ng-init="people=2;salary=80000">
+	<p>Total Salary (Example: ng-bind): <span ng-bind="people * salary"></span></p> -->	<!-- Using 'ng-bind' to bind (not recommended) -->
+<!-- </div>  -->
+
+<!-- <div ng-app="" ng-init="people=2;salary=80000"> -->					<!-- Using Expression to bind -->
+	<!-- <p>Total Salary (Example: ng-bind): {{people * salary}}</p>
+</div> -->
+
+<!-- (c) ng-init (Object) -->
+<!-- <div ng-app="" ng-init="country={countryName:'Bangladesh',countryCapital:'Dhaka'}">
+	<p>Country Name: {{country.countryName}}</p>
+	<p>Country Capital: {{country.countryCapital}}</p>
+</div> -->
+
+<!-- (d) ng-repeat (Inline way) -->
+<!-- <div ng-app="" ng-init="myArray=[1,15,19,2,40]">
+	Array elements are (Example: ng-repeat): <span ng-repeat="array in myArray">{{array}}&nbsp;&nbsp;</span> -->	<!-- Using 'ng-repeat'  -->
+<!-- </div>  -->
+
+<!-- (e) ng-repeat (Modular way) -->
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+	Array elements are (Example: ng-repeat): <span ng-repeat="array in myArray">{{array}}&nbsp;&nbsp;</span>
+</div>  -->
+
+<!--  <br>* Custom (Your Own):<br>
+
+<div ng-app="myApp" my-directive-two></div>  -->
+
+<!-- <br><u>Note: We can invoke a directive by using: (a) Element name; (b) Attribute; (c) Class; & (d) Comment</u><br><br> -->
+
+<!-- (a) Element name : <div ng-app="myApp"><my-directive-one></my-directive-one></div><br> -->
+<!-- (b) Attribute: <div ng-app="myApp" my-directive-two></div>  -->
+<!-- (c) Class: <div ng-app="myApp" class="my-directive-three"></div>  -->
+<!-- (d) Comment:  <div ng-app="myApp"> --><!-- directive: my-directive-Four --><!-- </div><br> -->
+
+<!-- ********************************** -->
+<hr>
+<b>Example-4: Few cool stuff related to 'ng-model' (Main focus would be: 'Two-Way Binding', 'Validate User Input', 'Application Status', 'CSS Classes'...etc)</b>
+<br>
+(a) Bind the value of an input field to a variable created in AngularJS: See example 1 <br>
+(b) Two-way-binding: See example 1 <br>
+(c)	Validate User Input: <br>
+<!-- 
+<br>
+<form ng-app="" name="myForm">
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+</form><br> -->
+(d)	Very important status check for application data (invalid, dirty, touched)<br>
+<!-- 
+<br>
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+    Email:
+    <input type="email" name="myAddress" ng-model="myText" required></p>
+    <h4>Application Status: </h4>
+    {{myForm.myAddress.$valid}} &nbsp; {{myForm.myAddress.$dirty}} &nbsp; {{myForm.myAddress.$touched}}
+</form> -->
+(e) Provides CSS classes for HTML elements<br>
+<!-- <br>
+<form ng-app="" name="myForm">
+    Enter your name:
+    <input name="myAddress" ng-model="text" required>
+</form> -->
+(f) Control methods while using ng-model<br>
+<!-- 
+<br>
+<div ng-app="myApp" ng-controller="myNewCtrl">
+	First Name: <input type="text" ng-model="firstName"><br>
+	Last Name: <input type="text" ng-model="lastName"><br>
+	<br>
+	Full Name: {{fullName()}}
+</div> -->
+
+<!-- ********************************** -->
+<hr>
+<b>Example-5: Formating data by AngularJS Filters (In-Build (<i>Mainly:</i> 'Filters to Expressions', 'Filters to Directives', 'currency Filter', 'filter Filter', 'Filter an Array'...etc) vs Custom (Your Own))</b>
+<br><br>
+* In-Build (<i>Mainly:</i> 'Filters to Expressions', 'Filters to Directives', 'currency Filter', 'filter Filter', 'Filter an Array'...etc):<br><br>
+(a)	Filters to Expressions (uppercase and lowercase ): <br>
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Country name: {{ country | uppercase }}</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Capital name: {{ capital | lowercase }}</p>
+</div> -->
+(b)	Filters to Directives (orderBy: By efault ascending; For descending just add '-' infront of the item): <br>
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+	<p>Looping with employees:</p>
+	<ul>
+	  <li ng-repeat="person in employees | orderBy:'country'">
+	    {{ person.name + ', ' + person.country }}
+	  </li>
+	</ul>
+</div> -->
+(c)	currency Filter (currency): <br>
+<!-- <div ng-app="myApp" ng-controller="myCtrl">
+	<h3>Salary is : {{ salary | currency }}</h3>
+</div> -->
+(d) filter Filter (filter - This can only be used on arrays, and it returns an array/subset of an array, containing only the matching items; We will see two examples): <br>
+<!-- 
+<br>Example-1:
+<div ng-app="myApp" ng-controller="myCtrl">
+	<ul>
+	  <li ng-repeat="person in employees | filter : 'i'">
+	    {{ person.name }}
+	  </li>
+	</ul>
+</div>
+Notice: Above example displays only the person's names containing the letter "i".<br><br> -->
+
+<!--
+<br>Example-2: <br>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<p>Type a letter in the input field:</p>
+	<p><input type="text" ng-model="personname"></p>
+	<ul>
+	  <li ng-repeat="person in employees | filter:personname">
+	    {{ person.name }}
+	  </li>
+	</ul>
+</div> -->
+
+<br>* Custom (Your Own):<br>
+<!-- 
+<br>Using our own format to display Country names: <br>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<ul>
+	    <li ng-repeat="person in employees">
+	        {{person.country | myFormat}}
+	    </li>
+	</ul>
+</div> -->
+
+<!-- ********************************** -->
+<hr>
+<b>Example-6: AngularJS Service-The powerful tools (In-Build (<i>Mainly:</i> '$location', '$http', '$timeout', '$interval'...etc) vs Custom (Your Own))</b>
+<br><br>
+* In-Build (<i>Mainly:</i> '$location', '$http', '$timeout', '$interval'...etc):<br><br>
+(a)	'$location' Service: <br>
+<!-- <div ng-app="myApp" ng-controller="serviceOneCtrl">
+	<p>The url of this page is: {{myUrl}}</p>
+</div> -->
+(b)	'$http' Service: <br>
+<!-- <div ng-app="myApp" ng-controller="serviceTwoCtrl">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{message}}&nbsp;&nbsp;< This message is coming from another source of the same server<br><br>  
+	Note: $http is an XMLHttpRequest object for requesting external data. In AngularJS, $http service reads data from remote server in (default) JSON format. Some shortcut methods of calling the $http service are (1) <code>.delete()</code>; (2) <code>.get()</code>; (3) <code>.head()</code>; (4) <code>.jsonp()</code>; (5) <code>.patch()</code>; (6) <code>.post()</code>; (7) <code>.put()</code>...etc. We also can use different properties withthese above methods to gather more INFO such as (1) <code>.config</code>; (2) <code>.data</code>; (3) <code>.headers</code>; (4) <code>.status</code>; (5) <code>.statusText</code>...etc:<br><br>
+	
+	<u>Some more INFO gathering:</u> <br>
+	Statuscode: {{statuscode}} &nbsp;&nbsp; / &nbsp;&nbsp; Statustext: {{statustext}}<br>
+	Config: {{config}}
+</div> -->
+(b)	'$timeout ' Service: <br>
+<!-- <div ng-app="myApp" ng-controller="timeoutCtrl">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>This message will change after two seconds:</span> {{timemessage}}
+</div> -->
+(c)	'$interval' Service: <br>
+<!-- <div ng-app="myApp" ng-controller="intervalCtrl">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>The time is:</span> {{theTime}}
+</div> -->
+
+<br>* Custom (Your Own): Once you have created a service, and connected it to your application, you can use the service in any controller, directive, filter, or even inside other services. <br>&nbsp;&nbsp;&nbsp;Here we will be focusing on how to create a service and then use that (a) in controller; (b) inside a Filter
+<br><br>
+(a) Create Custom Service and use that in Controller: <br>
+<!-- <div ng-app="myApp" ng-controller="customServiceCtrl">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>The hexadecimal value of 255 is: </span>{{hex}} 
+</div> -->
+(b) Create Custom Service and use that inside a Filter: <br>
+<!-- <div ng-app="myApp" ng-controller="customFilterServiceCtrl">
+	<p>Use a filter when displayin the array [135, 85, 286]:</p>
+	<ul>
+		<li ng-repeat="x in counts">{{x | myFormat}}</li>
+	</ul>
+	<p><b>Note:</b> This filter uses a service that converts numbers into hexadecimal values.</p>
+</div> -->
+
+
+<br><br>
+<font color="red"><strong>Coming more...</strong></font>
+
+
+
+
+
+<!-- ********************************** END ********************************** -->
+<script type="text/javascript" src="js/app.js"></script>
+
+<!-- ************************************************************************* -->
+<br><br><br>
+<fieldset>
+<legend>&nbsp; *** Personal Notes (Mainly from W3School) *** &nbsp;</legend>
+(1) While it is common in HTML applications to place scripts at the end of the <body> element, it is recommended that you load the AngularJS library either in the 
+<head> or at the start of the <body>. This is because calls to angular.module can only be compiled after the library has been loaded
+<br>
+(2)	The AngularJS application is defined by  ng-app="myApp". The ng-app directive defines the root element of an AngularJS application. It will auto-bootstrap (automatically initialize) the application when a web page is loaded
+<br>
+(3)	The ng-controller="myCtrl" attribute is an AngularJS directive. It defines a controller
+<br>
+(4)	The myCtrl function is a JavaScript function. AngularJS will invoke the controller with a $scope object
+<br>
+(5) ng-model directive binds the value of HTML controls (input, select, textarea) to application data
+<br>
+(6)	In AngularJS, $scope is the application object, available for both the HTML (view) and the JavaScript (controller) (the owner of application variables and functions). It is very important to know which scope you are dealing with, at any given time.<br>
+(7) SCOPE: If we consider an AngularJS application to consist of:<br>
+<ul>
+	<li>View, which is the HTML.</li>
+	<li>Model, which is the data available for the current view.</li>
+	<li>Controller, which is the JavaScript function that makes/changes/removes/controls the data.</li>
+</ul>
+Then the scope is the Model.<br>
+(8) ROOTSCOPE: All applications have a <code>$rootScope</code> which is the scope created on the HTML element that contains the ng-app directive. This rootScope is available in the entire application. Remember, if a variable has the same name in both the current scope and in the rootScope, the application use the one in the current scope. <br>
+
+</fieldset>
+
+</body>
+</html>
